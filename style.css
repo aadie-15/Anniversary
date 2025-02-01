@@ -1,0 +1,89 @@
+/* style.css */
+body {
+    background-color: rgb(161, 215, 230); /* Light background */
+    overflow: hidden; /* Hide scrollbars for confetti effect */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: sans-serif; /* Use a nice font */
+}
+
+.container {
+    display: flex;
+    flex-direction: column; /* Arrange elements vertically */
+    align-items: center;
+    background-color: rgb(81, 190, 218);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative; /* For positioning the heart */
+    overflow: hidden; /* Needed for heart animation */
+}
+
+.heart {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    position: absolute;
+    top: -50px; /* Position above the container */
+    left: 50%;
+    transform: translateX(-50%) rotate(-45deg);
+    animation: heartbeat 2s infinite ease-in-out; /* Heartbeat animation */
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: rgb(236, 155, 155);
+    border-radius: 50%;
+    top: -50px;
+    left: -100;
+}
+
+.heart::after {
+    left: 50px;
+}
+
+@keyframes heartbeat {
+    0% { transform: translateX(-50%) rotate(-45deg) scale(1); }
+    50% { transform: translateX(-50%) rotate(-45deg) scale(1.1); }
+    100% { transform: translateX(-50%) rotate(-45deg) scale(1); }
+}
+
+.message {
+    margin-top: 50px; /* Adjust spacing after heart */
+    animation: fadeIn 1s ease-in-out; /* Fade-in animation */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.couple-image {
+    width: 550px; /* Adjust image size */
+    height: 600px;
+    background-image: url("pic3.jpg"); /* Replace with your image */
+    background-size: cover;
+    background-position: center;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Confetti styles */
+#confetti {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allow clicking through confetti */
+    z-index: 1000; /* Ensure it's on top */
+}
